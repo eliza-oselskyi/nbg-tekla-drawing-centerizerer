@@ -21,6 +21,7 @@
 
 using System;
 using System.Windows.Forms;
+using Drawing.CenterView.Views;
 using Tekla.Structures.Drawing;
 using Tekla.Structures.Model;
 
@@ -35,6 +36,8 @@ internal static class Program
     static void Main()
     {
         var model = new Model();
+        if (!model.GetConnectionStatus()) MessageBox.Show("Connection to Tekla failed");
+        
         var drawingHandler = new DrawingHandler();
         if (!model.GetConnectionStatus()) return;
 
@@ -46,7 +49,8 @@ internal static class Program
         }
         else
         {
-            QuickCenterClass.EntryPoint();
+            //HeadlessClient.EntryPoint();
+            TestProgram.TestEntryPoint();
         }
     }
 }

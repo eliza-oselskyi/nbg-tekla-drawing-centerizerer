@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Drawing.CenterView.Views;
 using NUnit.Framework;
 using Tekla.Structures.Drawing;
 using Tekla.Structures.Geometry3d;
@@ -50,11 +51,11 @@ public class QuickCenterClassTests
         var viewType1 = GetViewTypeDict(_view1);
         var viewType2 = GetViewTypeDict(_view2);
 
-        var viewType1Enum = PluginForm.GetViewTypeEnum(viewType1);
-        var viewType2Enum = PluginForm.GetViewTypeEnum(viewType2);
+        var viewType1Enum = DrawingMethods.GetViewTypeEnum(viewType1);
+        var viewType2Enum = DrawingMethods.GetViewTypeEnum(viewType2);
 
-        if ((viewType1Enum != PluginForm.ViewType.None && viewType2Enum == PluginForm.ViewType.None) ||
-            (viewType1Enum == PluginForm.ViewType.None && viewType2Enum != PluginForm.ViewType.None))
+        if ((viewType1Enum != GaViewType.None && viewType2Enum == GaViewType.None) ||
+            (viewType1Enum == GaViewType.None && viewType2Enum != GaViewType.None))
             Assert.That(DrawingUtils.IsValidDrawingForCenter(_drawing), Is.True, "Should be a valid drawing");
         else
             Assert.That(DrawingUtils.IsValidDrawingForCenter(_drawing), Is.False, "Should not be a valid drawing");

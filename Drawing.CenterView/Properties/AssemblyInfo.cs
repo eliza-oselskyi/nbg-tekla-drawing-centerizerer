@@ -28,6 +28,9 @@ using System.Runtime.InteropServices;
 [assembly:
     InternalsVisibleTo(
         "Drawing.CenterView.UnitTests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100b1bf37359d32a0 f0be13f078c32a93b99f7bbe552297480dccd6e7ff6493a55d1d577b11358afdca593735cd3b74 a68366cde37fa7e57b04a2a12b60d95280ba104f112ffc7fdfa2dc22d4dcea80cf2bc0492156c9 7fb6c278219f2d442947f73b2fa20e4461332ca078d18f93dea3f6bce5de101d78a30280fa2ea4 82c8cae2")]
+[assembly:
+    InternalsVisibleTo(
+        "Drawing.CenterView.Library, PublicKey=0024000004800000940000000602000000240000525341310004000001000100b1bf37359d32a0 f0be13f078c32a93b99f7bbe552297480dccd6e7ff6493a55d1d577b11358afdca593735cd3b74 a68366cde37fa7e57b04a2a12b60d95280ba104f112ffc7fdfa2dc22d4dcea80cf2bc0492156c9 7fb6c278219f2d442947f73b2fa20e4461332ca078d18f93dea3f6bce5de101d78a30280fa2ea4 82c8cae2")]
 [assembly: AssemblyTitle("Drawing.CenterView")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -56,5 +59,5 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("1.0.0.4")]
-[assembly: AssemblyFileVersion("1.0.0.4")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]

@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using Drawing.CenterView.Views;
 
 namespace Drawing.CenterView;
 
@@ -62,11 +63,11 @@ public partial class PluginForm
         if (PluginForm.ActiveForm != null) PluginForm.ActiveForm.ShowInTaskbar = false;
 
         // Events 
-        _UiEvents.OnDrawingLoaded("CheckDrawingState");
-        _UiEvents.DrawingEditorClosed += ExitApplication;
-        _UiEvents.DrawingLoaded += CheckDrawingState;
+        _uiEvents.OnDrawingLoaded("CheckDrawingState");
+        _uiEvents.DrawingEditorClosed += ExitApplication;
+        _uiEvents.DrawingLoaded += CheckDrawingState;
         _events.DrawingChanged += CheckDrawingState;
-        _UiEvents.Register();
+        _uiEvents.Register();
         _events.Register();
 
         InfoBox.ToDefault(infoBox);
@@ -181,8 +182,8 @@ public partial class PluginForm
         view.Origin.X += amount;
         view.Modify();
         view.GetStringUserProperties(out Dictionary<string, string> viewType);
-        GetViewTypeEnum(viewType);
-        InfoBox.OnInfo(infoBox, $"Shifting Right => {(ViewType)GetViewTypeEnum(viewType)}");
+        DrawingMethods.GetViewTypeEnum(viewType);
+        InfoBox.OnInfo(infoBox, $"Shifting Right => {(GaViewType)DrawingMethods.GetViewTypeEnum(viewType)}");
         DrawingHandler.GetActiveDrawing().CommitChanges("Shift View Right");
     }
 
@@ -193,8 +194,8 @@ public partial class PluginForm
         view.Origin.Y += amount;
         view.Modify();
         view.GetStringUserProperties(out Dictionary<string, string> viewType);
-        GetViewTypeEnum(viewType);
-        InfoBox.OnInfo(infoBox, $"{(ViewType)GetViewTypeEnum(viewType)}\nShifting Up =^");
+        DrawingMethods.GetViewTypeEnum(viewType);
+        InfoBox.OnInfo(infoBox, $"{(GaViewType)DrawingMethods.GetViewTypeEnum(viewType)}\nShifting Up =^");
         DrawingHandler.GetActiveDrawing().CommitChanges("Shift View Up");
     }
 
@@ -205,8 +206,8 @@ public partial class PluginForm
         view.Origin.Y -= amount;
         view.Modify();
         view.GetStringUserProperties(out Dictionary<string, string> viewType);
-        GetViewTypeEnum(viewType);
-        InfoBox.OnInfo(infoBox, $"Shifting Down=v\n{(ViewType)GetViewTypeEnum(viewType)}");
+        DrawingMethods.GetViewTypeEnum(viewType);
+        InfoBox.OnInfo(infoBox, $"Shifting Down=v\n{(GaViewType)DrawingMethods.GetViewTypeEnum(viewType)}");
         DrawingHandler.GetActiveDrawing().CommitChanges("Shift View Down");
     }
 
@@ -217,8 +218,8 @@ public partial class PluginForm
         view.Origin.X -= amount;
         view.Modify();
         view.GetStringUserProperties(out Dictionary<string, string> viewType);
-        GetViewTypeEnum(viewType);
-        InfoBox.OnInfo(infoBox, $"{(ViewType)GetViewTypeEnum(viewType)} <= Shifting Left");
+        DrawingMethods.GetViewTypeEnum(viewType);
+        InfoBox.OnInfo(infoBox, $"{(GaViewType)DrawingMethods.GetViewTypeEnum(viewType)} <= Shifting Left");
         DrawingHandler.GetActiveDrawing().CommitChanges("Shift View Left");
     }
 }

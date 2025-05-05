@@ -30,6 +30,7 @@ using System.Text;
 using Svg;
 using System.Windows.Forms;
 using Drawing.CenterView.Properties;
+using Drawing.CenterView.Views;
 using Tekla.Structures;
 using Tekla.Structures.Catalogs;
 using Tekla.Structures.Dialog;
@@ -76,8 +77,8 @@ namespace Drawing.CenterView
             while (allViews.MoveNext())
             {
                 allViews.Current.GetStringUserProperties(out Dictionary<string, string> viewTypes);
-                var type = PluginForm.GetViewTypeEnum(viewTypes);
-                if (type is ViewType.None) continue;
+                var type = DrawingMethods.GetViewTypeEnum(viewTypes);
+                if (type is GaViewType.None) continue;
                 memberCount++;
                 memberList.Add(allViews.Current);
             }
@@ -107,7 +108,7 @@ namespace Drawing.CenterView
             if (currView != null)
             {
                 currView.GetStringUserProperties(out Dictionary<string, string> viewTypes);
-                CenterView(currView, (int)GetViewTypeEnum(viewTypes));
+                CenterView(currView, (int)DrawingMethods.GetViewTypeEnum(viewTypes));
             }
             else
             {
@@ -151,7 +152,7 @@ namespace Drawing.CenterView
             else if (Math.Abs(view.ExtremaCenter.X - sheetWidth) > 0.0001 ||
                      Math.Abs(view.ExtremaCenter.Y - sheetHeight) > 0.0001)
             {
-                InfoBox.OnInfo(infoBox, $"Centering {(ViewType)viewType}");
+                InfoBox.OnInfo(infoBox, $"Centering {(GaViewType)viewType}");
                 view.Origin.X += xOffset;
                 view.Origin.Y += yOffset;
 

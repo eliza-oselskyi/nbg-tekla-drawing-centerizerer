@@ -1,7 +1,8 @@
-﻿namespace Drawing.CenterView;
-        public enum ViewType
+﻿namespace Drawing.CenterView.Views;
+        public enum GaViewType
         {
             None,
+            Assembly,
             CoverSheet,
             BuildingSheet1,
             BuildingSheet2,
@@ -32,4 +33,9 @@
             MezzaninePlanFramingOnly,
             MezzaninePlanJoistsOnly,
             MezzaninePlanDecking
+        }
+
+        public enum FabViewType
+        {
+            None,
         }
