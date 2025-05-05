@@ -32,7 +32,7 @@ namespace Drawing.CenterView;
 
 public partial class PluginForm
 {
-    private readonly Tekla.Structures.Drawing.UI.Events _uiEvents = new Tekla.Structures.Drawing.UI.Events();
+    private readonly Tekla.Structures.Drawing.UI.Events _UiEvents = new Tekla.Structures.Drawing.UI.Events();
     private readonly Tekla.Structures.Drawing.Events _events = new Tekla.Structures.Drawing.Events();
     private readonly object _exitEventHandlerLock = new object();
 
@@ -242,7 +242,7 @@ public partial class PluginForm
 
     private void PluginForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        _uiEvents.UnRegister();
+        _UiEvents.UnRegister();
         _events.UnRegister();
     }
 

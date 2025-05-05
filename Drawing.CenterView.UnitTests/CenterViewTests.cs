@@ -25,7 +25,6 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Reflection;
 using System.Resources;
-using Drawing.CenterView.Views;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Tekla.Structures.Drawing;
@@ -57,9 +56,9 @@ namespace Drawing.CenterView.UnitTests
                 var view = views.Current as View;
                 var origViewOrigin = view.Origin;
                 views.Current.GetStringUserProperties(out var viewTypes); // Get viewTypes
-                var type = DrawingMethods.GetViewTypeEnum(viewTypes);
+                var type = PluginForm.GetViewTypeEnum(viewTypes);
 
-                if (type is GaViewType.None)
+                if (type is ViewType.None)
                 {
                     Assert.Ignore("No view valid type found");
                 }
@@ -86,9 +85,9 @@ namespace Drawing.CenterView.UnitTests
                     var curr = views.Current as View;
                     if (curr == null) Assert.Inconclusive("Null current view found");
                     curr.GetStringUserProperties(out var viewTypes);
-                    var type = DrawingMethods.GetViewTypeEnum(viewTypes);
+                    var type = PluginForm.GetViewTypeEnum(viewTypes);
 
-                    if (type != GaViewType.None) member++;
+                    if (type != ViewType.None) member++;
                 }
 
                 if (member > 1) Assert.Inconclusive("More than one \"valid\" view found");
@@ -110,9 +109,9 @@ namespace Drawing.CenterView.UnitTests
                 views.MoveNext();
                 var view = views.Current as View;
                 views.Current.GetStringUserProperties(out var viewTypes); // Get viewTypes
-                var type = DrawingMethods.GetViewTypeEnum(viewTypes);
+                var type = PluginForm.GetViewTypeEnum(viewTypes);
 
-                if (type is GaViewType.None)
+                if (type is ViewType.None)
                 {
                     Assert.Ignore("No view valid type found");
                 }
@@ -135,9 +134,9 @@ namespace Drawing.CenterView.UnitTests
                     var curr = views.Current as View;
                     if (curr == null) Assert.Inconclusive("Null current view found");
                     curr.GetStringUserProperties(out var viewTypes);
-                    var type = DrawingMethods.GetViewTypeEnum(viewTypes);
+                    var type = PluginForm.GetViewTypeEnum(viewTypes);
 
-                    if (type != GaViewType.None) member++;
+                    if (type != ViewType.None) member++;
                 }
 
                 if (member > 1) Assert.Inconclusive("More than one \"valid\" view found");
